@@ -1,13 +1,21 @@
 import React from "react";
-import Stock from "./Stock";
 
-function PortfolioContainer() {
+function PortfolioContainer({ portfolio, sellStock }) {
   return (
     <div>
       <h2>My Portfolio</h2>
-      {
-        //render your portfolio stocks here
-      }
+      {portfolio.map((stock) => (
+        <div key={stock.id} onClick={() => sellStock(stock)}>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">{stock.name}</h5>
+              <p className="card-text">
+                {stock.ticker}: {stock.price}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
